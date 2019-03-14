@@ -1,1 +1,1 @@
-# MailRuCourse_Android_dev
+Здесь находятся домашние задания, выполненные на курсе "Разработка Android-приложений" от MailRuGroup.
