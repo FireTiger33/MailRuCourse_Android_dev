@@ -19,10 +19,9 @@ public class ZoomFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_zoom, container, false);
 
         TextView textView = view.findViewById(R.id.elementText);
-        textView.setText(String.valueOf(args.getInt("text")));
+        textView.setText(args.getString("text"));
         textView.setTextColor(args.getInt("color"));
 
         return view;
     }
-
 }

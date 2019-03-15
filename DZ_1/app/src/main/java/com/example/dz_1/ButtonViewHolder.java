@@ -11,38 +11,36 @@ import android.widget.Button;
 
 class ButtonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     private Button button;
-    private int num;
+    private String num;
     private int color;
     private FragmentManager manager;
-    private int viewHolderNum;
 
-    public ButtonViewHolder(@NonNull View itemView, FragmentManager manager, int viewHolderNum) {
+
+    public ButtonViewHolder(@NonNull View itemView, FragmentManager manager) {
         super(itemView);
-        this.viewHolderNum = viewHolderNum;
-        Log.d("ProgramLog", "create_new_holder " + viewHolderNum);
         button = itemView.findViewById(R.id.buttonId);
         button.setOnClickListener(this);
         this.manager = manager;
     }
 
+
     public void bind (int num) {
-        Log.d("ProgramLog", "bindViewHolder");
-        this.num = num;
-        button.setText(String.valueOf(num) + "." + viewHolderNum);
+        this.num = String.valueOf(num);
+        button.setText(this.num);
         color = num % 2 > 0? Color.BLUE: Color.RED;
         button.setTextColor(color);
     }
 
+
     @Override
     public void onClick(View v) {
         Bundle properties = new Bundle();
-        properties.putInt("text", num);
+        properties.putString("text", num);
         properties.putInt("color", color);
 
         ZoomFragment fragment = new ZoomFragment();
         fragment.setArguments(properties);
 
-        Log.d("ProgramLog", "click" + num);
         manager.beginTransaction()
                 .addToBackStack(null)
                 .replace(R.id.main_activity, fragment)
